@@ -1,0 +1,8 @@
+#!/bin/bash
+
+conda update conda -y
+
+conda install -y --file /application/dependencies/python/packages.list
+
+conda clean --all -y
+
