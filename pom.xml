@@ -8,10 +8,10 @@
   <parent>
     <groupId>com.terradue</groupId>
     <artifactId>dcs-python-parent</artifactId>
-    <version>2.0.0</version>
+    <version>3.0.1-docker</version>
   </parent>
   <description>CHIRPS COGs</description>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.1</version>
   <properties>
     <summary>CHIRPS COGs</summary>
     <description>CHIRPS COGs</description>
