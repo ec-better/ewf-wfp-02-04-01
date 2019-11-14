@@ -11,7 +11,7 @@
     <version>3.0.1-docker</version>
   </parent>
   <description>CHIRPS COGs</description>
-  <version>0.0</version>
+  <version>0.1</version>
   <properties>
     <summary>CHIRPS COGs</summary>
     <description>CHIRPS COGs</description>
