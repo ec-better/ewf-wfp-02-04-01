@@ -1,7 +1,10 @@
-import lxml.etree as etree
-import time
 import os
+import time
+import gdal
+
 import numpy as np
+import lxml.etree as etree
+
 from shapely.wkt import loads
         
 def create_metadata(metadata, filename):
@@ -116,4 +119,26 @@ def create_metadata(metadata, filename):
 
     return filename + '.xml', filename + '.properties'
 
+def cog(input_tif, output_tif, clear=True):
+    
+    translate_options = gdal.TranslateOptions(gdal.ParseCommandLine('-co TILED=YES ' \
+                                                                    '-co COPY_SRC_OVERVIEWS=YES ' \
+                                                                    ' -co COMPRESS=LZW'))
+
+    ds = gdal.Open(input_tif, gdal.OF_READONLY)
+
+    gdal.SetConfigOption('COMPRESS_OVERVIEW', 'DEFLATE')
+    ds.BuildOverviews('NEAREST', [2,4,8,16,32])
+    
+    ds = None
+
+    ds = gdal.Open(input_tif)
+    gdal.Translate(output_tif,
+                   ds, 
+                   options=translate_options)
+    ds = None
+
+    os.remove('{}.ovr'.format(input_tif))
+    if clear:
+        os.remove(input_tif)
 
