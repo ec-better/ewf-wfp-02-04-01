@@ -202,7 +202,7 @@ def main():
   
     # Loops over all the inputs
     for reference in sys.stdin:
-      references.append(reference.rstrip())
+        references.append(reference.rstrip())
     
     # stage-in the data
     stage_in()
